@@ -50,7 +50,18 @@ public class UserServiceImpl implements UserService {
 	}
 	
 	public List<Employee> getAllUsers(){
-		return userRepository.findAll();
+		return userRepository.findAllActiveEmployees();
+	}
+
+	public void hardDelete(Integer id){
+		 userRepository.deleteById(id);
+	}
+
+	public void softDeleteUser(Integer id) {
+		Employee employee =userRepository.findById(id)
+				.orElseThrow(() -> new RuntimeException("Employee not found with id: " + id));
+		employee.setDeleted(true);
+		userRepository.save(employee);
 	}
 
 }

@@ -26,7 +26,16 @@ public class Employee {
     @Pattern(regexp = "^[A-Za-z0-9.]+@gmail\\.com$", message = "Email must be valid and end with @gmail.com")
     private String emailid;
 
-    // getters and setters
+    private boolean isDeleted;
+
+    public boolean isDeleted() {
+        return isDeleted;
+    }
+
+    public void setDeleted(boolean deleted) {
+        isDeleted = deleted;
+    }
+// getters and setters
 
     public Integer getId() {
         return id;
